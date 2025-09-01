@@ -1,0 +1,385 @@
+body {
+	margin: 0;
+	font-family: Arial, sans-serif;
+	background-color: #f2f2f2;
+}
+
+.unselectableText {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Standard syntax */
+}
+
+.container {
+	min-height: 100vh;
+	display: -ms-flexbox;
+	display: flex;
+	flex-direction: column;
+  -ms-flex-pack: center;
+      justify-content: center;
+  -ms-flex-align: center;
+      align-items: center;
+  background-size: cover;
+  background-position: center center;
+}
+
+.form {
+	padding: 25px;
+	border: none;
+	border-radius: 25px;
+	background-color: #fff;
+	box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.05);
+	display: inline;
+}
+
+.form .title {
+	display: flex;
+	justify-content: center;
+  align-items: center;
+	padding: 0;
+}
+
+.title h1 {
+	margin-left: 17px;
+	font-size: 32px;
+	font-weight: 500;
+	color: #666;
+}
+
+/*----------------
+	 General Inputs
+	----------------*/
+
+.inputsWrapper {
+	padding: 0 25px;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	align-content: center;
+}
+
+.inputsWrapper div {
+	width: 100%;
+	max-width: 641px;
+	display: flex;
+	justify-content: space-between;
+  align-items: center;
+	padding: 0;
+}
+
+
+.inputsWrapper div p {
+	color: #666;
+  font-size: 18px;
+}
+
+.inputsWrapper input {
+	width: 300px;
+	padding: 0;
+	background: transparent;
+  font-size: 18px;
+  border-width: 0;
+	border-bottom-width: 1px;
+	border-color: #ccc;
+  border-radius: 0;
+  vertical-align: baseline;
+	overflow: visible;
+  color: #666;
+	font-family: Arial, sans-serif;
+}
+
+.inputsWrapper input::placeholder {
+  color: #ccc;
+  font-size: 18px;
+}
+
+.inputsWrapper input:hover, .inputsWrapper input:focus {
+  outline: 0;
+}
+
+.inputsWrapper input:focus {
+	border-bottom-width: 2px;
+  border-color: #aaa;
+}
+
+/*------
+	 Date
+	------*/
+
+.inputsWrapper div div.date {
+	width: 300px;
+	height: 21px;
+  vertical-align: baseline;
+	justify-content: left;
+	border-style: solid;
+	border-color: #ccc;
+	border-width: 0;
+	border-bottom-width: 1px;
+}
+
+.inputsWrapper div .date:focus-within {
+	border-bottom-width: 2px;
+  border-color: #aaa;
+}
+
+.inputsWrapper div .date:focus-within P {
+  color: #666;
+}
+
+.inputsWrapper div .date input {
+	width: min-content;
+	field-sizing: content;
+	padding: 0 1px;
+	border: none;
+}
+
+.inputsWrapper div .date p {
+	color: #ccc;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/*----------------
+	 Machine Number
+	----------------*/
+	
+.inputsWrapper div.machineNumbers {
+	margin: 0;
+	padding-left: 0;
+	list-style: none;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 5px;
+	justify-content: left;
+	align-content: center;
+}
+
+.inputsWrapper div .machineNumberWrapper {
+	overflow: hidden;
+	width: initial;
+}
+
+.inputsWrapper div .machineNumberWrapper:hover {
+	overflow: visible;
+}
+
+.inputsWrapper div.machineNumbers .machineNumber {
+	width: initial;
+	place-items: center;
+  background: #f0f0f0;
+	border-radius: 18px;
+  color: #333;
+  border: 0;
+  padding: 0 10px 0 20px;
+	text-wrap: nowrap;
+	overflow: hidden;
+  font-size: 18px;
+	display: flex;
+	justify-content: space-evenly;
+	align-content: center;
+	cursor: pointer;
+}
+
+.inputsWrapper div .machineNumber p {
+  line-height: 30px;
+	margin: 3px 0;
+	max-width: 250px;
+	text-wrap: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+  color: #666;
+}
+
+.inputsWrapper div .machineNumber button {
+	height: 25px;
+	width: 25px;
+  background: transparent;
+  border: 0;
+	padding: 0;
+	margin: 0 0 0 3px;
+  cursor: pointer;
+}
+
+.inputsWrapper div .machineNumber svg {
+  fill: #ccc;
+  width: 25px;
+  height: 25px;
+  transition: color .2s ease-out;
+}
+
+.inputsWrapper div .machineNumber button:hover, .machineNumber button:focus {
+  outline: 0;
+  box-shadow: none;
+}
+
+.inputsWrapper div .machineNumber:hover svg, .machineNumber button:focus svg {
+  fill: #666;
+}
+
+/*---------
+	 Buttons
+	---------*/
+
+.buttonsWrapper button {
+	font-size: 18px;
+  display: inline-block;
+  padding: 0 10px;
+  line-height: 32px;
+  border-radius: 7px;
+  margin-right: 10px;
+  cursor: pointer;
+	border: none;
+	transition: color .2s ease-out;
+}
+	
+.cButton {
+	background-color: #f0f0f0;
+	color: #666;
+}
+
+.cButton:hover, .cButton:focus {	
+	outline: 0;
+	background-color: #e8e8e8;
+}
+
+.eButton {
+	background-color: #aaa;
+	color: #fff;
+}
+
+.eButton:hover, .eButton:focus {	
+	outline: 0;
+	background-color: #999;
+}
+
+/*-------------
+	 Empty Class
+	-------------*/
+
+.inputsWrapper div div.empty, input.empty {
+	border-color: #ff0000;
+	background-color: #fff0f0;
+}
+
+.inputsWrapper div div.empty:focus-within, input.empty:focus {
+	border-color: #ff0000;
+}
+
+/*--------
+	 Result
+	--------*/
+
+.resultWrapper {
+	width: 100%;
+	max-width: 741px;
+	margin: 18px 0 0 0;
+	display: none; /*RE display:flex*/
+	justify-content: space-between;
+  align-items: center;
+	padding: 0;
+}
+
+.resultWrapper p {
+	margin: 0;
+	color: #666;
+  font-size: 18px;
+  vertical-align: baseline;
+  cursor: pointer;
+}
+
+.resultWrapper p:hover {
+	color: #444;
+}
+
+.resultWrapper p:hover ~ button {
+	background-color: #999;
+}
+
+.resultWrapper button {
+	min-width: 36px;
+	min-height: 36px;
+	padding: 1px 0 0 1px;
+	font-size: 18px;
+  display: inline-block;
+  line-height: 32px;
+  border-radius: 7px;
+  cursor: pointer;
+	border: none;
+	transition: color .2s ease-out;
+	background-color: #aaa;
+	color: #fff;
+}
+
+.resultWrapper button:hover, .resultWrapper button:focus {	
+	outline: 0;
+	background-color: #999;
+}
+
+/* Tooltip container */
+.resultWrapper button {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.resultWrapper button .toolTip {
+  visibility: hidden;
+  width: 130px;
+	height: 20px;
+	bottom: 100%;
+  left: 50%;
+	margin: 0;
+  margin-left: -65px; /* Use half of the width (120/2 = 60), to center the tooltip */
+  background-color: #666;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  font-size: 14px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+ 
+  position: absolute;
+  z-index: 1;
+}
+
+.resultWrapper button .toolTip::after {
+  content: " ";
+  position: absolute;
+  top: 100%; /* At the bottom of the tooltip */
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #666 transparent transparent transparent;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.resultWrapper p:hover ~ button .toolTip, .resultWrapper button:hover .toolTip, .resultWrapper button:focus .toolTip {
+  visibility: visible;
+}
+
+.errorWrapper {
+	width: 100%;
+	max-width: 741px;
+	margin: 18px 0 0 0;
+	display: none; /*RE display:flex*/
+	justify-content: left;
+  align-items: center;
+	padding: 0;
+}
+
+.errorWrapper p {
+	margin: 0;
+	color: red;
+  font-size: 18px;
+  vertical-align: baseline;
+  cursor: pointer;
+}

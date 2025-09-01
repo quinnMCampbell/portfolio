@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html>
+ 
+<head>
+	<title>Best Practices Search</title>
+	<link href='./BPSstylesheet.css' rel='stylesheet'>
+	<script type='module'>
+	
+		/*------
+		   Data
+			------*/
+	
+		// Best Practices data, used for searching and displaying results
+		const data = [
+			{ id:'BPI-BP-GEI-0001', title:'BEST PRACTICES SEARCH SYSTEM DOCUMENTATION', keywords:['engineering', 'documentation', 'edit', 'best practice'], content:'purpose: train bpi employees how to create, update, and maintain the best practices search system. provide proper ways to make small changes to the system. materials needed: n/a references: bpi-bp-xxxx-####.dotx (best practices template) bpi-bp-gei-0003 (best practice index system) best practice index.xlsx (best practice index excel) table of contents 1. creating a best practice 5 1.1. creating a best practice checklist 5 1.1.1. conclusion 5 1.2. create best practice word document 5 1.2.1. open template 5 1.2.2. fill out header fields 5 1.2.3. fill out first page 5 1.2.4. table of contents 6 1.2.5. content 6 1.2.6. save the word document 6 1.3. create best practice pdf 6 1.3.1. save as pdf 6 1.4. update best practice index 6 1.4.1. open the best practice index 6 1.4.2. add table row 6 1.4.3. sort id column 6 1.4.4. save the best practice index 7 1.5. run powershell command 7 1.5.1. open terminal 7 1.5.2. run the command 7 1.5.3. confirm result 7 2. editing a best practice 7 2.1. editing a best practice checklist 7 2.1.1. conclusion 8 2.2. edit best practice word document 8 2.2.1. open word document 8 2.2.2. edit word document 8 2.2.3. approve changes 8 2.2.4. save the word document 8 2.3. overwrite best practice pdf 8 2.3.1. save as pdf 8 2.4. update best practice index 8 2.4.1. open the best practice index 8 2.4.2. edit the table row 9 2.4.3. save the best practice index 9 2.5. run powershell command 9 2.5.1. open terminal 9 2.5.2. run the command 9 2.5.3. confirm result 9 3. retiring a best practice 9 3.1. editing a best practice checklist 9 3.1.1. conclusion 10 3.2. edit best practice index 10 3.2.1. open the best practice index 10 3.2.2. edit the table row 10 3.2.3. save the best practice index 10 3.3. run powershell command 10 3.3.1. open terminal 10 3.3.2. run the command 10 3.3.3. confirm result 11 4. mass updating keywords 11 4.1. editing a best practice checklist 11 4.1.1. conclusion 11 4.2. edit best practice index 11 4.2.1. open the best practice index 11 4.2.2. edit the table rows 11 4.2.3. save the best practice index 12 4.3. run powershell command 12 4.3.1. open terminal 12 4.3.2. run the command 12 4.3.3. confirm result 12 5. best practice index 12 5.1. columns 12 5.1.1. id 12 5.1.2. title 13 5.1.3. keywords 13 5.1.4. word document path 13 5.1.5. changed by 13 5.1.6. change date 13 5.1.7. approved by 14 5.1.8. approval date 14 5.1.9. hidden 14 5.2. changing columns 14 5.2.1. column order 14 5.2.2. column names 14 1. creating a best practice 1.1. creating a best practice checklist ? create best practice word document ? create best practice pdf ? update best practice index ? run powershell command 1.1.1. conclusion when everything is checked off, a new best practice was created and bpsearch.html was updated to make the document searchable. 1.2. create best practice word document 1.2.1. open template open the best practices template titled bpi-bp-xxxx-####, located at h:\master documents\!template\bpi-bp-xxxx-####.docx. 1.2.2. fill out header fields title ? the title of the best practice. id ? the unique best practice id given to the document, new ids are created using the bpi-bp-xxxx-#### format, where xxxx is the document subtype abbreviation and #### is the next available number of that subtype. more information regarding best practice ids can be found at bpi-bp-gei-0003, located at h:\pdfs\bpi-bp-gei-0003.pdf. document subtype ? the non-abbreviated document subtype, should match the document subtype in the id. last changed by ? the initials of who made the most recent change, in this case whoever is creating the best practice, and the date the last change was made, in the mm/dd/yyyy format, include leading zeros. last approved by ? the initials and date field will be filled in by whoever approves the information of the best practice is accurate. 1.2.3. fill out first page purpose ? the purpose or description of the best practice, attempt to be specific but also concise. this paragraph becomes the description of the best practice in its search result. materials ? any physical materials or tools needed for the practice, can be n/a. references ? any references to other best practices within the document, can be n/a. 1.2.4. table of contents reflects and links to headings used within the document. when adding more headings, left-click the table, select update table, select update entire table, then select ok to update the table to reflect any heading changes whether name or page number. 1.2.5. content starting on the page after the table of contents, write the procedures, information, and images the best practice covers, using headings, heading 2s, and heading 3s to subdivide the content and make it easier to access from the table of contents. 1.2.6. save the word document save, ctrl + s, the best practice as a .docx in the master documents folder, h:\master documents, with the document?s name being its id. 1.3. create best practice pdf 1.3.1. save as pdf in the best practices word document, in save as, save the document as a .pdf in the pdfs folder, h:\pdfs, with the pdf?s name being the document?s id. 1.4. update best practice index 1.4.1. open the best practice index open the best practice index excel titled best practice index.xlsx, located at h:\search system\best practice index.xlsx. 1.4.2. add table row add a new row to the table and populate each column with the information specific to the best practice. these columns are covered in more detail in section 5. best practice index of this document. 1.4.3. sort id column left-click the drop down in the id column header, then select sort a to z. 1.4.4. save the best practice index save the best practice index, ctrl + s. 1.5. run powershell command 1.5.1. open terminal in file explorer, navigate to the search system folder, h:\search system\, right-click -> open in terminal to open powershell in the correct directory. 1.5.2. run the command on the terminal command line, type the following command: ./updatebp bpi-bp-xxxx-#### replacing the bpi-bp-xxxx-#### with the document?s id. then run the command, enter. 1.5.3. confirm result while the command is running it should print updates upon completing certain steps, like accessing files. the command would print, successfully updated bpsearch.html, if the script encountered no issues and finished updating the bpsearch.html. meaning users can search for the document after reloading their page. if the script returned a warning, it could have still updated bpsearch.html, it encountered some behavior that was likely unintentional and is informing the user. if the script returned an error, it failed to update bpsearch.html and is providing the user with some idea of what the issue is. 2. editing a best practice 2.1. editing a best practice checklist ? edit best practice word document ? overwrite best practice pdf ? update best practice index ? run powershell command 2.1.1. conclusion when everything is checked off, a best practice was edited and bpsearch.html was updated to reflect the changes made to the document. 2.2. edit best practice word document 2.2.1. open word document open the best practices word document in the master documents folder, located at h:\master documents\. 2.2.2. edit word document make any desired changes to the word document, then remember to update the table of contents, left-click the table, select update table, select update entire table, then select ok. in the header, correct the last changed by initials and date. 2.2.3. approve changes get the changes made to the document approved and then correct the last approved by initials and date. 2.2.4. save the word document save the word document, ctrl + s. 2.3. overwrite best practice pdf 2.3.1. save as pdf in the best practices word document, in save as, save the document as a .pdf in the pdfs folder, h:\pdfs, with the pdf?s name being the document?s id. select ok when prompted to replace the old pdf. 2.4. update best practice index 2.4.1. open the best practice index open the best practice index excel titled best practice index.xlsx, located at h:\search system\best practice index.xlsx. 2.4.2. edit the table row locate the row for the best practice, use the id column, and edit any column whose information specific to the best practice was changed. these columns are covered in more detail in section 5. best practice index of this document. 2.4.3. save the best practice index save the best practice index, ctrl + s. 2.5. run powershell command 2.5.1. open terminal in file explorer, navigate to the search system folder, h:\search system\, right-click -> open in terminal to open powershell in the correct directory. 2.5.2. run the command on the terminal command line, type the following command: ./updatebp bpi-bp-xxxx-#### replacing the bpi-bp-xxxx-#### with the document?s id. then run the command, enter. 2.5.3. confirm result while the command is running it should print updates upon completing certain steps, like accessing files. the command would print, successfully updated bpsearch.html, if the script encountered no issues and finished updating the bpsearch.html. meaning users can search for the document after reloading their page. if the script returned a warning, it could have still updated bpsearch.html, it encountered some behavior that was likely unintentional and is informing the user. if the script returned an error, it failed to update bpsearch.html and is providing the user with some idea of what the issue is. 3. retiring a best practice 3.1. editing a best practice checklist ? edit best practice index ? run powershell command 3.1.1. conclusion when everything is checked off, a best practice was retired and will not appear in bpsearch.html search results. 3.2. edit best practice index 3.2.1. open the best practice index open the best practice index excel titled best practice index.xlsx, located at h:\search system\best practice index.xlsx. 3.2.2. edit the table row locate the row for the best practice, use the id column, and in the hidden column write retired. these columns are covered in more detail in section 5. best practice index of this document. anything written in this column will cause the document to not appear in search results, so it can be used to write a reason why the document should not appear in search. 3.2.3. save the best practice index save the best practice index, ctrl + s. 3.3. run powershell command 3.3.1. open terminal in file explorer, navigate to the search system folder, h:\search system\, right-click -> open in terminal to open powershell in the correct directory. 3.3.2. run the command on the terminal command line, type the following command: ./updatebp bpi-bp-xxxx-#### replacing the bpi-bp-xxxx-#### with the document?s id. then run the command, enter. 3.3.3. confirm result while the command is running it should print updates upon completing certain steps, like accessing files. the command would print, successfully updated bpsearch.html, if the script encountered no issues and finished updating the bpsearch.html. meaning users can search for the document after reloading their page. if the script returned a warning, it could have still updated bpsearch.html, it encountered some behavior that was likely unintentional and is informing the user. if the script returned an error, it failed to update bpsearch.html and is providing the user with some idea of what the issue is. 4. mass updating keywords 4.1. editing a best practice checklist ? edit best practice index ? run powershell command 4.1.1. conclusion when everything is checked off, a best practice was retired and will not appear in bpsearch.html search results. 4.2. edit best practice index 4.2.1. open the best practice index open the best practice index excel titled best practice index.xlsx, located at h:\search system\best practice index.xlsx. 4.2.2. edit the table rows locate the rows for the best practices, use the id column, and in the keywords column add the desired keywords. these columns are covered in more detail in section 5. best practice index of this document. keywords are words and phrases that help search find the best practice. separate keywords using newlines, alt + enter. 4.2.3. save the best practice index save the best practice index, ctrl + s. 4.3. run powershell command 4.3.1. open terminal in file explorer, navigate to the search system folder, h:\search system\, right-click -> open in terminal to open powershell in the correct directory. 4.3.2. run the command on the terminal command line, type the following command: ./updatebpkw then run the command, enter. 4.3.3. confirm result while the command is running it should print updates upon completing certain steps, like accessing files. the command would print, successfully updated bpsearch.html, if the script encountered no issues and finished updating the bpsearch.html. meaning users can search for the document after reloading their page. if the script returned a warning, it could have still updated bpsearch.html, it encountered some behavior that was likely unintentional and is informing the user. if the script returned an error, it failed to update bpsearch.html and is providing the user with some idea of what the issue is. 5. best practice index 5.1. columns 5.1.1. id the best practice?s id, used by the powershell script to match a row?s contents with its best practice. it is important for the id to be in a format the script can read, meaning no spaces in the cell even after the id. used by search. 5.1.2. title the best practice?s title, this text is what becomes the title displayed as the best practice?s search result. used by search. 5.1.3. keywords words and phrases that help search find the best practice. separate keywords using newlines, alt + enter. keywords can be used to attach words to a best practice for searching, even if it is not present in the id, title, or content of the document, such as a department. additionally, keywords have a higher priority than content, so they can be used to make type of document, like a set-up manual, to appear higher in the search results than a document that has set-up manual in its contents more times. used by search. 5.1.4. word document path the file path to the document?s .docx file. obtain in file explorer, with the document?s .docx file selected, right-click -> copy as path or ctrl + shift + c. in excel make a hyperlink, with the cell selected ctrl + k (note: the cell must be selected not accessing its text). paste, ctrl + v, the copied file path into the address textbox and in the text to display textbox remove any quotation marks from the edges of the path, then select ok. the visible text of the hyperlink is used by the powershell script to find the word document to read the content. it is important for the path to be in a format the script can read, meaning just the path and no quotation marks. not used by search. 5.1.5. changed by the initials of who the document was last changed by. not used by search. 5.1.6. change date the date the document was last changed. not used by search. 5.1.7. approved by the initials of who the document was last approved by. not used by search. 5.1.8. approval date the date the document was last approved. not used by search. 5.1.9. hidden the reason why the document should not appear in search results. if any text is present in this column, the best practice of that row will not be included in bpsearch.html?s dataset, meaning the document will not appear in any search results. used to retire documents or have active documents that are not visible via search. not used by search. 5.2. changing columns 5.2.1. column order the order and position of the columns can be changed at any time. 5.2.2. column names the names of a column can be changed, but the powershell scripts access their contents based on the columns? names. so whenever a name change is made to a column, open both scripts, updatebp.ps1 and updatebpkw.ps1 in a text editor, and correct any of the editable variables, near the start of the file, that are for the headers that were changed. ', pdfPath:'./PDFs/BPI-BP-GEI-0001.pdf', description:'Train BPI employees how to create, update, and maintain the Best Practices Search System. Provide proper ways to make small changes to the system.', idMatch:0, titleMatches:0, keywordMatches:0, contentMatches:0, contentTypes:0},
+			{ id:'BPI-BP-GEI-0002', title:'SPECIAL, CUSTOM TOOLING SEARCH SYSTEM DOCUMENTATION', keywords:['engineering', 'documentation', 'edit', 'special', 'custom', 'tool'], content:'purpose: train bpi employees how to update and maintain the special, custom tooling search system. provide proper ways to make small changes to the system. materials needed: n/a references: special custom tooling inventory.xlsx (special custom tooling inventory excel) table of contents 1. add tooling 4 1.1. add tooling checklist 4 1.1.1. conclusion 4 1.2. update special custom tooling inventory 4 1.2.1. open the special custom tooling inventory 4 1.2.2. add table row 4 1.2.3. sort part number column 4 1.2.4. save the special custom tooling inventory 4 1.3. run powershell command 4 1.3.1. open terminal 4 1.3.2. run the command 4 1.3.3. confirm result 5 2. edit tooling 5 2.1. edit tooling checklist 5 2.1.1. conclusion 5 2.2. edit special custom tooling inventory 5 2.2.1. open the special custom tooling inventory 5 2.2.2. edit table row 5 2.2.3. save the special custom tooling inventory 5 2.3. run powershell command 6 2.3.1. open terminal 6 2.3.2. run the command 6 2.3.3. confirm result 6 3. special custom tooling inventory 6 3.1. columns 6 3.1.1. add a column 6 3.1.2. remove a column 7 3.1.3. rename a column 7 3.1.4. resize a column 7 4. powershell script 8 4.1. editable variables 8 4.1.1. htmlname 8 4.1.2. excelname 8 4.1.3. pnheader 8 4.1.4. defaultcriteria 8 4.1.5. headerblist 8 4.1.6. paths 9 4.2. script permissions 9 4.2.1. properties 9 4.2.2. enabling permissions 9 4.2.3. disabling permissions 9 1. add tooling 1.1. add tooling checklist ? update special custom tooling inventory ? run powershell command 1.1.1. conclusion when everything is checked off, new tooling will be added to and be viewable in special, custom tooling search.html. 1.2. update special custom tooling inventory 1.2.1. open the special custom tooling inventory open the special, custom tooling inventory excel titled special custom tooling inventory.xlsx, located at e:/general tooling/special custom tooling inventory/special custom tooling inventory.xlsx. 1.2.2. add table row add a new row to the table and populate each column with the information specific to the best practice. 1.2.3. sort part number column left-click the drop down in the part number column header, then select sort a to z. 1.2.4. save the special custom tooling inventory save the special, custom tooling inventory, ctrl + s. 1.3. run powershell command 1.3.1. open terminal in file explorer, navigate to the special custom tooling inventory folder, e:/general tooling/special custom tooling inventory/, right-click -> open in terminal to open powershell in the correct directory. 1.3.2. run the command on the terminal command line, type the following command: ./updatescts 1.3.3. confirm result while the command is running it should print updates upon completing certain steps, like accessing files. the command would print, successfully updated special, custom tooling search.html, if the script encountered no issues and finished updating the special, custom tooling search.html. meaning users can view the tooling additions after reloading their page. if the script returned an error, it failed to update bpsearch.html and is providing the user with some idea of the issue. 2. edit tooling 2.1. edit tooling checklist ? edit special custom tooling inventory ? run powershell command 2.1.1. conclusion when everything is checked off, new tooling will be added to and be viewable in special, custom tooling search.html. 2.2. edit special custom tooling inventory 2.2.1. open the special custom tooling inventory open the special, custom tooling inventory excel titled special custom tooling inventory.xlsx, located at e:/general tooling/special custom tooling inventory/special custom tooling inventory.xlsx. 2.2.2. edit table row locate the row for the tool, use the part number column, and edit any column whose information specific to the tooling was changed. multiple tools can be edited during this step, by editing each of their rows. 2.2.3. save the special custom tooling inventory save the special, custom tooling inventory, ctrl + s. 2.3. run powershell command 2.3.1. open terminal in file explorer, navigate to the special custom tooling inventory folder, e:/general tooling/special custom tooling inventory/, right-click -> open in terminal to open powershell in the correct directory. 2.3.2. run the command on the terminal command line, type the following command: ./updatescts 2.3.3. confirm result while the command is running it should print updates upon completing certain steps, like accessing files. the command would print, successfully updated special, custom tooling search.html, if the script encountered no issues and finished updating the special, custom tooling search.html. meaning users can view the tooling additions after reloading their page. if the script returned an error, it failed to update bpsearch.html and is providing the user with some idea of the issue. 3. special custom tooling inventory 3.1. columns after making any changes to the columns, save the special custom tooling inventory document and run the powershell command, as described in section 2. edit tooling, to have the changes reflected on the special, custom tooling search.html. 3.1.1. add a column in the excel, columns can be added, and these changes will be reflected in the html. whenever adding a column to the left of other columns, check if the html column sizing needs to be adjusted. refer to section 3.1.4. resize a column. if the added column is the rightmost column, this does not need to be checked. 3.1.2. remove a column in the excel, columns can be removed, and these changes will be reflected in the html. whenever removing a column to the left of other columns, check if the html column sizing needs to be adjusted. refer to section 3.1.4. resize a column. if the removed column was the rightmost column, this does not need to be checked. 3.1.3. rename a column in the excel, columns can be renamed, and these names will be reflected in the html. when renaming the part numbers column, in a text editor, open the powershell script file updatescts.ps1, located at e:/general tooling/special custom tooling inventory/updatescts.ps1. then change the variable pnheader near the top of the file, in the editable section. when renaming a column in the headerblist variable, ensure that the name of column is corrected in that variable as well. open updatescts.ps1 to view what columns are in it. 3.1.4. resize a column in the html, the columns are automatically sized upon the generation of the search results. but the size of a column can be hard coded to a fixed, minimum, or maximum number of pixels or percentage of the table. to adjust these sizes, in a text editor, open the stylesheet.css for the html, located at f:/calculators/searching/stylesheet.css. at the bottom of the file are the structures that format the different columns of the table. example: thead th:nth-child( int x ) { width: float y %; } where x is the column that is being targeted, 1-indexing, width is the property being adjusted, alternatively the property could be set to min-width or max-width to allow the column to be flexible with limits, and y is the percentage of the table the targeted column will take up, alternatively y could have the px suffix for number of pixels. whenever a column is added, removed, or moved the structures that format the columns may need to be adjusted, specifically x, since columns could change order and the number they are represented by. 4. powershell script 4.1. editable variables the editable variables may need to be changed whenever file name or path changes are made, or if certain column names in the excel file are changed. to edit them, in a text editor, open the powershell script file updatescts.ps1, located at e:/general tooling/special custom tooling inventory/updatescts.ps1. then change the desired variable, located near the top of the file, in the editable section. 4.1.1. htmlname htmlname needs to be updated if the name of the html file is changed. htmlname must reflect the name of the .html file. bpireporting also uses the name of the file to display it, the name will need to be changed in its code as well. 4.1.2. excelname excelname needs to be updated if the name of the excel file is changed. excelname must reflect the name of the .xlsx file. 4.1.3. pnheader pnheader needs to be updated if the name of the part number column header is changed. pnheader must reflect the name of the column header for the part number column in the excel file. 4.1.4. defaultcriteria defaultcriteria sets what column the html page selects as the search criteria when the page is loaded. 4.1.5. headerblist headerblist needs to be updated if the names of any column names in this array are changed. headerblist is the black list, of header column names, for the selectable search criteria. any column name in this array will not appear in the selection dropdown on the html page. column names can be added or removed from this array to toggle if they will appear. 4.1.6. paths the paths need to be updated if the location of either the html or excel files are changed. htmlpath must reflect the location of the .html file. excelpath must reflect the location of the .xlsx file. 4.2. script permissions 4.2.1. properties the scripting permissions allow any user on the computer, where the permissions were given, to run trusted script files in powershell. 4.2.2. enabling permissions logged in to any account on the user?s computer, open the windows start menu search windows powershell, right click the application and select run as administrator. on the command line run the following command: set-executionpolicy -executionpolicy remotesigned 4.2.3. disabling permissions logged in to any account on the user?s computer, open the windows start menu search windows powershell, right click the application and select run as administrator. on the command line run the following command: set-executionpolicy -executionpolicy default ', pdfPath:'./PDFs/BPI-BP-GEI-0002.pdf', description:'Train BPI employees how to update and maintain the Special, Custom Tooling Search System. Provide proper ways to make small changes to the system.', idMatch:0, titleMatches:0, keywordMatches:0, contentMatches:0, contentTypes:0}
+		];
+
+		/*---------------------
+		   Search Option Menus
+			---------------------*/
+
+		// Variables for menus
+		var lastMenu = -1;
+		var coloredButton = 0;
+		
+		// Real time updates for menu positioning
+		var s = document.createElement("style");
+		document.body.append(s);
+		window.onresize = function() {
+			s.innerHTML = ":root{--menuX:" + (window.innerWidth/2 - 752/2) + "px;--menuY:" + (window.innerHeight/2 + 103.5) + "px}" + "--winWidth:" + (window.innerWidth/2) + "px;--winHeight:" + (window.innerHeight) + "px}";
+		}
+		// Initial values for menu positioning
+		s.innerHTML = ":root{--menuX:" + (window.innerWidth/2 - 752/2) + "px;--menuY:" + (window.innerHeight/2 + 103.5) + "px}" + "--winWidth:" + (window.innerWidth/2)+ "px;--winHeight:" + (window.innerHeight) + "px}";
+			
+		// Listeners for menu buttons
+		const buttons = document.getElementById('buttons');
+		const childButtons = buttons.querySelectorAll('button');
+		for (let i = 0; i < childButtons.length; ++i) {
+			childButtons[i].addEventListener('click', function() {
+				menu(i);
+			});
+		}
+		
+		// Determines whether to open and/or close menus
+		function menu(button) {
+			if (button == lastMenu) {
+				closeMenu(button);
+			}
+			else if (lastMenu == -1) {
+				openMenu(button);
+			}
+			else {
+				closeMenu(button, false);
+				setTimeout(function() {
+					openMenu(button);
+				}, 200);
+			}
+		}
+		
+		// Variables for menus
+		const menuBox = document.getElementById('menuBox');
+		const menus = menuBox.querySelectorAll(':scope > div')
+
+		// Opens the given menu
+		function openMenu(button) {
+			childButtons[button].blur();
+			
+			// Displays the menu
+			menus[button].style.display = 'inline';
+			menuBox.style.maxHeight = '250px';
+			
+			// Adds the coloredButton class to all other menu buttons
+			for (let i = 0; i < childButtons.length; ++i) {
+				childButtons[i].style.borderRadius = '16px 16px 0 0';
+				if (i != button) {
+					childButtons[i].classList.add('coloredButton');
+				}
+			}
+			
+			// Adjusts the global menu variables
+			lastMenu = button;
+			coloredButton = button;
+		}
+		
+		// Closes the given menu
+		function closeMenu(button, borderRadius = true, transition = true) {
+			childButtons[button].blur();
+			
+			// Removes the transition
+			if (!transition) {
+				menuBox.style.transition = 'none';
+			}
+			
+			// Closes the menu
+			menuBox.style.maxHeight = '0';
+			
+			// Waits 200 ms
+			setTimeout(function() {
+				// Hides the menu
+				menus[lastMenu].style.display = 'none';
+				
+				// Adjusts the global menu variables
+				lastMenu = -1;
+				
+				// Returns the transition to the menu box and buttons
+				if (!transition) {
+					menuBox.style.transition = 'max-height 0.2s ease';
+					for (let i = 0; i < childButtons.length; ++i) {
+						childButtons[i].style.transition = 'border-radius .2s ease-out, color .2s ease-out';
+					}
+				}
+			}, 200);
+			
+			// Removes the coloredButton class and adjusts the transitions
+			for (let i = 0; i < childButtons.length; ++i) {
+				if (borderRadius) {
+					if (!transition) {
+						childButtons[i].style.transition = 'none';
+					}
+					childButtons[i].style.borderRadius = '16px';
+				}
+				childButtons[i].classList.remove('coloredButton');
+			}
+		}
+		
+		/*---------
+			 Filters
+			---------*/
+		
+		// Listener for when the filters checkbox is toggled
+		const filtersCheckbox = document.getElementById('cb10');
+		filtersCheckbox.addEventListener('change', function() {
+			if (!filtersCheckbox.checked) {	// Filters are disabled, removing all filters
+				const filterWrappers = document.getElementById('filters').querySelectorAll(':scope > div');
+				for (let i = 0; i < filterWrappers.length; ++i) {
+					removeFilter(filterWrappers[i]);
+				}
+			}
+		});
+		
+		// Adds a filter with a value of query
+		function addFilter(query) {
+			// Returns if the query is empty
+			if (query === '') {
+				return;
+			}
+			
+			// Reads the text of all the filters
+			let ps = document.getElementById('filters').querySelectorAll('p');
+			let queries = Array.from(ps).map(p => p.textContent.toLowerCase());
+			if (queries.includes(query.toLowerCase())) {	// Returns if the query is already a filter
+				return;
+			}
+			
+			// Creates the X button
+			const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+			path.setAttribute('d', 'M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z');
+			const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+			svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+			svg.setAttribute('viewBox', '0 0 24 24');
+			svg.appendChild(path);
+			const button = document.createElement('button');
+			button.setAttribute('type', 'button');
+			button.appendChild(svg);
+			
+			// Creates and sets the text
+			const p = document.createElement('p');
+			p.textContent = query;
+			
+			// Creates the background bubble
+			const filter = document.createElement('div');
+			filter.classList.add('filter');
+			filter.appendChild(p);
+			filter.appendChild(button);
+			const filterWrapper = document.createElement('div');
+			filterWrapper.classList.add('filterWrapper');
+			filterWrapper.appendChild(filter);
+			
+			// Appends to the filter div
+			document.getElementById('filters').appendChild(filterWrapper);
+			
+			// Adds event listener for the button click
+			filterWrapper.addEventListener('click', function() {
+				removeFilter(event.currentTarget, true);
+			});
+		}
+		
+		// Removes the given filter
+		function removeFilter(filterWrapper, doSearch = false) {
+			if (filterWrapper) {	// Checks that the filter exists before removing it
+				filterWrapper.remove();
+				if (!document.getElementById('filters').children.length) {	// Goes back to front page if the last filter was removed
+					setMain();
+					return;
+				}
+				else if (doSearch) {	// Does a search with any remaining filters
+					search(true);
+				}
+			}
+		}
+		
+		/*-----------------------
+			 Searching and Results
+		  -----------------------*/
+		
+		// Global variables for the results
+		var resultsPage = false;
+		const results = document.getElementById('results');
+		const numResults = document.getElementById('numResults');
+		const yesResults = document.getElementById('yesResults');
+		const noResults = document.getElementById('noResults');
+		
+		// Listener for bar click, to focus the searchBar input
+		document.getElementById('bar').addEventListener('click', function() {
+			searchBar.focus();
+		});
+		
+		// Listener for search button
+		document.getElementById('searchButton').addEventListener('click', function() {
+			searchBar.focus();
+			search(false);
+		});
+		
+		// Listener for returning to the main page
+		document.getElementById('bpiButton').addEventListener('click', function() {
+			setMain();
+		});
+		
+		// Focuses the search bar on page load
+		const searchBar = document.getElementById('searchBar');
+		searchBar.focus();
+		
+		// Listener for hitting the xButton
+		const xButton = document.getElementById('xButton');
+		xButton.addEventListener('click', function() {
+			searchBar.value = '';
+			searchBar.focus();
+			xButton.style.display = 'none';
+		});
+		
+		// Listeners for search bar button inputs
+		searchBar.addEventListener('keydown', function(event) {
+			if (event.key === 'Enter') {	// Searches if enter was pressed
+				search(false);
+			}
+			else if (searchBar.value === '' && event.key === 'Backspace' && document.getElementById('cb10').checked) {	// Removes most recent filter if backspace is pressed and there no characters in the SearchBar
+				removeFilter(document.getElementById('filters').lastElementChild, true);
+			}
+		});
+		searchBar.addEventListener('keyup', function(event) {
+			if (searchBar.value === '') {	// Removes xButton if there are no characters in the searchBar input
+				xButton.style.display = 'none';
+			}
+			else if (resultsPage) {	// Displays xButton if there are characters in the searchBar input and on the results page
+				xButton.style.display = 'flex';
+			}
+		});
+		
+		// Performs search, calls results page, and creates the results
+		function search(allowEmpty = false) {
+			// Reads the text from the searchBar input, removing special characters and making letters lowercase
+			var query = searchBar.value.replaceAll(/[?!.,]/g, '').toLowerCase();
+			
+			// Removes spaces and hyphens from the beginning and end of the query
+			query = query.replace(/^[ -]+|[ -]+$/g, '');
+			if (query === '' && !allowEmpty) {	// Except when removing a filter, returns if the query is empty
+				searchBar.value = '';
+				return;
+			}
+			searchBar.blur();
+			
+			// Removes old results and sets the results page
+			clearResults();
+			setResults();
+			
+			// Reads search criteria
+			const searchID = document.getElementById('cb00').checked;
+			const searchTitle = document.getElementById('cb01').checked;
+			const searchKeywords = document.getElementById('cb02').checked;
+			const searchContent = document.getElementById('cb03').checked;
+			
+			// Reads if filters are enabled
+			const filtersEnabled = document.getElementById('cb10').checked;
+			
+			// Finds documents with query matches, based on the search criteria, sorts them in an avlBST
+			function searchData(query, indexes, reset) {
+				// Creates a new avlBST
+				var avlBST = new avlTree;
+				
+				// Loops through each passed in document
+				for (let i = 0; i < indexes.length; ++i) {
+					let index = indexes[i];
+					
+					// Resets the number of matches, on first past through of a search
+					if (reset) {
+						data[index].idMatch = 0;
+						data[index].titleMatches =  0;
+						data[index].keywordMatches = 0;
+						data[index].contentMatches = 0;
+						data[index].contentTypes = 0;
+					}
+					let idMatch = 0;
+					let titleMatches = 0;
+					let keywordMatches = 0;
+					let contentMatches = 0;
+					
+					// Searching for matches
+					if (searchID) {	// Looks for an id match, if enabled
+						idMatch = data[index].id.toLowerCase().includes(query) * 1;
+					}
+					if (searchTitle) {	// Counts the number of title matches, if enabled
+						titleMatches = occurrences(data[index].title.toLowerCase(), query, false);
+					}
+					if (searchKeywords) {	// Counts the number of keyword matches, if enabled
+						keywordMatches = occurrences(data[index].keywords, query, false);
+					}
+					if (searchContent) {	// Counts the number of content matches, if enabled
+						contentMatches = occurrences(data[index].content, query, false);
+						if (contentMatches) {	// Increases the number of content types matched to, if there was a content match
+						data[index].contentTypes += 1;
+						}
+					}
+					if (!filtersEnabled && ((idMatch || data[index].idMatch) || (titleMatches || data[index].titleMatches) || (keywordMatches || data[index].keywordMatches) || (contentMatches || data[index].contentMatches))) {	// Add result if filters are disabled and there were any matches this pass or any previous passes
+						data[index].idMatch += idMatch;
+						data[index].titleMatches += titleMatches;
+						data[index].keywordMatches += keywordMatches;
+						data[index].contentMatches += contentMatches;
+						avlBST.add(index);
+					}
+					else if (filtersEnabled && (idMatch || titleMatches || keywordMatches || contentMatches)) {	// Add result if filters are enabled and there were any matches this pass
+						data[index].idMatch += idMatch;
+						data[index].titleMatches += titleMatches;
+						data[index].keywordMatches += keywordMatches;
+						data[index].contentMatches += contentMatches;
+						avlBST.add(index);
+					}
+				}
+				// Returns the post order traversal of the avlBST
+				return avlBST.postOrderTraversal();
+			}
+			
+			// Forms array of queries and searched for results
+			let queries = [];
+			if (filtersEnabled) {	// Filter search method
+				addFilter(query);
+				searchBar.value = '';
+				searchBar.focus();
+				
+				// Creates array of queries
+				var ps = document.getElementById('filters').querySelectorAll('p');
+				queries = Array.from(ps).map(p => p.textContent.toLowerCase());
+				
+				// Generates array of indexes for each document
+				var input = Array.from({ length: data.length }, (_, index) => index);
+				
+				// First search uses every document
+				var results = searchData(queries[0], input, true);
+				// Subsequent searches use only results of searches prior to it
+				for (let i = 1; i < queries.length; ++i) {
+					results = searchData(queries[i], results, false);
+				}
+			}
+			else {	// Normal, inclusive, search method
+				// Forms array of queries via parsing the search query
+				queries = parseQuery(query);
+				
+				// Generates array of indexes for each document
+				var input = Array.from({ length: data.length }, (_, index) => index);
+				
+				// First search uses every document
+				var results = searchData(queries[0], input, true);
+				// Subsequent searches use every document
+				for (let i = 1; i < queries.length; ++i) {
+					results = searchData(queries[i], input, false);
+				}
+			}
+			
+			// Displays results menu
+			if (results.length) {	// Results found
+				if (results.length === 1) {	// Generates text for only one result
+					numResults.textContent = results.length + ' Result';
+				}
+				else {	// Generates text for multiple results
+					numResults.textContent = results.length + ' Results';
+				}
+				// Displays number of results
+				numResults.style.display = 'inline';
+				
+				// Displays the results
+				for (let i = 0; i < results.length; ++i) {
+					addResult(results[i]);
+				}
+			}
+			else {	// No results found
+				noResults.style.display = 'inline';
+			}
+		}
+		
+		// Strings that will be removed from a query
+		const blacklist = [
+			'the', 'be', 'to', 'of', 'and', 'a', 'in', 'that', 'have', 'i',
+			'it', 'for', 'not', 'on', 'with', 'he', 'as', 'you', 'do', 'at',
+			'this', 'but', 'his', 'by', 'from', 'they', 'we', 'say', 'her', 'she',
+			'or', 'will', 'an', 'my', 'one', 'all', 'would', 'there', 'their', 'what',
+			'so', 'is', 'out', 'if', 'about', 'who', 'get', 'which', 'go', 'when',
+			'me', 'make', 'can', 'like', 'time', 'no', 'just', 'him', 'know', 'take',
+			'person', 'into', 'year', 'your', 'good', 'some', 'could', 'them', 'see', 'other',
+			'than', 'then', 'now', 'look', 'only', 'come', 'its', 'over', 'think', 'also',
+			'back', 'after', 'use', 'two', 'how', 'our', 'work', 'first', 'well', 'way',
+			'even', 'new', 'want', 'because', 'any', 'these', 'give', 'day', 'most', 'us',
+			'why', 'where', 'up', 'does', ''
+		];
+		
+		// Suffixes that will be removed from the ends of strings in the query
+		const suffixes = ['s', 'ed', 'ing'];
+		
+		// Returns an array of strings, after parsing the input
+		function parseQuery(string) {
+			// Generates array of strings from query, using spaces and hyphens as delimiters
+			const words = string.split(/[ -]/);
+			
+			// Removes strings on the blacklist from the array
+			const queries = words.filter(item => !blacklist.includes(item));
+			
+			// Removes suffixes from the array
+			const suffixRemove = word => {
+				const foundSuffix = suffixes.find(str => word.endsWith(str));
+				return !foundSuffix ? word : word.slice(0, -foundSuffix.length);
+			}
+			const parsed = queries.map(suffixRemove);
+			
+			if (parsed.length) {	// Returns any strings that remain
+				return parsed;
+			}
+			// No strings remain, returns the first array of strings
+			return words;
+		}
+		
+		// Returns the number of subString occurrences in string
+		function occurrences(string, subString, allowOverlapping) {
+			string += "";
+			subString += "";
+			if (subString.length <= 0) return (string.length + 1);
+
+			var n = 0,
+				pos = 0,
+				step = allowOverlapping ? 1 : subString.length;
+
+			while (true) {
+				pos = string.indexOf(subString, pos);
+				if (pos >= 0) {
+					++n;
+					pos += step;
+				} else break;
+			}
+			return n;
+		}
+		
+		// Helper class of avlTree
+		class Node {
+			constructor(data) {
+				this.data = data;
+				this.left = null;
+				this.right = null;
+				this.height = 1;
+			}
+		}
+		
+		// AVL Binary Search Tree
+		class avlTree {
+			constructor() {
+				this.root = null;
+			}
+			
+			nodeHeight(node) {
+				return node ? node.height : 0;
+			}
+			
+			nodeBalance(node) {
+				return this.nodeHeight(node.left) - this.nodeHeight(node.right);
+			}
+			
+			rightRotate(node) {
+				let childL = node.left;
+				let childLR = childL.right;
+				
+				childL.right = node;
+				node.left = childLR;
+				
+				node.height = 1 + Math.max(this.nodeHeight(node.left), this.nodeHeight(node.right));
+				childL.height = 1 + Math.max(this.nodeHeight(node.left), this.nodeHeight(node.right));
+				return childL;
+			}
+			
+			leftRotate(node) {
+				let childR = node.right;
+				let childRL = childR.left;
+				
+				childR.left = node;
+				node.right = childRL;
+				
+				node.height = 1 + Math.max(this.nodeHeight(node.left), this.nodeHeight(node.right));
+				childR.height = 1 + Math.max(this.nodeHeight(node.left), this.nodeHeight(node.right));
+				return childR;
+			}
+			
+			insert(node, data) {
+				if (!node) return new Node(data);
+				
+				if (resultLessThan(node.data, data)) {
+					node.right = this.insert(node.right, data);
+				}
+				else {
+					node.left = this.insert(node.left, data);
+				}
+				
+				// Update height
+				node.height = 1 + Math.max(this.nodeHeight(node.left), this.nodeHeight(node.right));
+				
+				// Check balance
+				const balance = this.nodeBalance(node);
+				
+				// Correcting balance
+				// Case: Left, Left
+				if (balance > 1 && this.nodeBalance(node.left) >= 0) {
+					return this.rightRotate(node);
+				}
+				// Case: Left, Right
+				if (balance > 1 && this.nodeBalance(node.left) < 0) {
+					node.left = this.leftRotate(node.left);
+					return this.rightRotate(node);
+				}
+				// Case: Right, Right
+				if (balance < -1 && this.nodeBalance(node.right) <= 0) {
+					return this.leftRotate(node);
+				}
+				// Case: Right, Left
+				if (balance < -1 && this.nodeBalance(node.right) > 0) {
+					node.right = this.rightRotate(node.right);
+					return this.leftRotate(node);
+				}
+				return node;
+			}
+			
+			add(data) {
+				this.root = this.insert(this.root, data);
+			}
+			
+			postOrderTraversal() {
+				const order = [];
+				function traverse(node) {
+					if (!node) return;
+					traverse(node.right);
+					order.push(node.data);
+					traverse(node.left);
+				}
+				traverse(this.root);
+				return order;
+			}
+		}
+		
+		// Takes two indexes for the data array, returns true if a < b
+		// Priotiry idMatch > #titleMatches > #keywordMatches > #contentTypes > #contentMatches > id (alphabetically)
+		function resultLessThan(a, b) {
+			if (data[a].idMatch === data[b].idMatch) {
+				if (data[a].titleMatches === data[b].titleMatches) {
+					if (data[a].keywordMatches === data[b].keywordMatches) {
+						if (data[a].contentTypes === data[b].contentTypes) {
+							if (data[a].contentMatches === data[b].contentMatches) {
+								return data[a].id > data[b].id;
+							}
+							return data[a].contentMatches < data[b].contentMatches;
+						}
+						return data[a].contentTypes < data[b].contentTypes;
+					}
+					return data[a].keywordMatches < data[b].keywordMatches;
+				}
+				return data[a].titleMatches < data[b].titleMatches;
+			}
+			return data[a].idMatch < data[b].idMatch;
+		}
+		
+		// Takes an index for the data array, adds a result to the html from the data index
+		function addResult(i) {
+			// Creates the div
+			const div = document.createElement('div');
+			div.classList.add('result');
+			yesResults.appendChild(div);
+			
+			// Creates the id, title, hyperlink
+			const a = document.createElement('a');
+			a.textContent = data[i].id + ': ' + data[i].title;
+			a.setAttribute('href', data[i].pdfPath);
+			a.setAttribute('target', '_blank');
+			div.appendChild(a);
+			
+			// Creates the text description
+			const p = document.createElement('p');
+			p.classList.add('desc');
+			p.textContent = data[i].description;
+			div.appendChild(p);
+		}
+		
+		// Clears all results from the html
+		function clearResults() {
+			// Hides the number of results and the no results
+			numResults.style.display = 'none';
+			noResults.style.display = 'none';
+		
+			// Finds all the children of the yesResults div
+			const childResults = yesResults.querySelectorAll('div');
+			// Iterates through and deletes every child
+			for (let i = 0; i < childResults.length; ++i) {
+				childResults[i].remove();
+			}
+		}
+		
+		// Adjusts the css properties of the page to set the Results view
+		function setResults() {
+			if (resultsPage) {	// Returns if already on the results view
+				return;
+			}
+			if (lastMenu != -1) {	// Closes a menu, if one is open
+				closeMenu(0, true, false);
+			}
+			// Updates the resultsPage global variable
+			resultsPage = true;
+			
+			// Changes the form to be at the top of the page
+			const form = document.getElementById('form');
+			form.style.width = '100%';
+			form.style.top = '0';
+			form.style.boxShadow = '0 0 5px rgba(0, 0, 0, 0.1)';
+			form.style.display = 'flex';
+			form.style.position = 'fixed';
+			
+			// Adjusts the title div, so the bpiLogo and searchBar are inline
+			const title = document.getElementById('title');
+			title.style.justifyContent = 'left';
+			title.style.padding = '0 17px';
+			
+			// Changes the bpiLogo to a button
+			const bpiButton = document.getElementById('bpiButton');
+			bpiButton.style.cursor = 'pointer';
+			bpiButton.setAttribute('tabindex', '0');
+			bpiButton.blur();
+			
+			// Hides the title text
+			const titleText = document.getElementById('titleText');
+			titleText.style.display = 'none';
+			
+			if (!document.getElementById('cb10').checked) {	// Displays the xButton if filters are not enabled
+				const xButton = document.getElementById('xButton');
+				xButton.style.display = 'flex';
+			}
+			
+			// Adjusts the menu buttons, to be in the top left of the page
+			buttons.style.width = '752px';
+			buttons.style.marginLeft = 'auto';
+			
+			// Adjusts the menus, to join their buttons
+			const menu = document.getElementById('menu');
+			menu.style.top = '68px';
+			menu.style.right = '2px';
+			
+			// Displays the results div
+			results.style.display = 'inline';
+		}
+		
+		// Adjusts the css properties of the page to set the Main view
+		function setMain() {
+			if (!resultsPage) {	// Returns if already on the main view
+				return;
+			}
+			if (lastMenu != -1) {	// Closes a menu, if one is opened
+				closeMenu(0, true, false);
+			}
+			// Updates the resultsPage global variable
+			resultsPage = false;
+			
+			// Changes the form to be at the center of the page
+			const form = document.getElementById('form');
+			form.style.width = '790px';
+			form.style.top = 'var(--winHeight)';
+			form.style.boxShadow = '0 0 5px rgba(0, 0, 0, 0)';
+			form.style.display = 'inline';
+			form.style.position = 'absolute';
+			
+			// Adjusts the title div, so the bpiLogo is above the searchBar
+			const title = document.getElementById('title');
+			title.style.justifyContent = 'center';
+			title.style.padding = '0';
+			
+			// Changes the bpiLogo to an image
+			const bpiButton = document.getElementById('bpiButton');
+			bpiButton.style.cursor = 'unset';
+			bpiButton.setAttribute('tabindex', '-1');
+			
+			// Displays the title text
+			const titleText = document.getElementById('titleText');
+			titleText.style.display = 'inline';
+			
+			// Hides the xButton
+			const xButton = document.getElementById('xButton');
+			xButton.style.display = 'none';
+			
+			// Adjusts the menu buttons, to be in the top left of the page
+			buttons.style.width = '100%';
+			buttons.style.marginLeft = '0';
+			
+			// Adjusts the menus, to join their buttons
+			const menu = document.getElementById('menu');
+			menu.style.top = 'var(--menuY)';
+			menu.style.right = 'var(--menuX)';
+			
+			// Hides the results div
+			results.style.display = 'none';
+			
+			// Clears any text in the searchBar
+			searchBar.value = '';
+		}		
+	</script>
+</head>
+
+<body>
+	<div class='container' id='container'>
+		<div class='form' id='form'>
+			<div class='title' id='title'>
+				<button class='bpiButton' id='bpiButton' type='button' tabindex='-1'>
+					<img class='image' src='./bradhartLogo.png' alt='Bradhart Logo' width='251' height='71' draggable='false'>
+				</button>
+				<h1 id='titleText'>Best Practices Search</h1>
+			</div>
+			<div class='innerForm'>
+				<div class='inputField'>
+					<button class='searchButton' id='searchButton' type='button'>
+						<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'>
+							<path d='M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'></path>
+						</svg>
+					</button>
+					<button class='xButton' id='xButton' type='button'>
+						<svg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 24 24'>
+							<path d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z'></path>
+						</svg>
+					</button>
+					<div class='bar' id='bar'>
+						<div class='filters' id='filters'>
+							
+						</div>
+						<input class='searchBar' id='searchBar' type='text' placeholder='Search Best Practices'>
+					</div>
+				</div>
+			</div>
+			<div class='buttons' id='buttons'>
+				<button type='button' id='button0'>Search Options</button>
+				<button type='button' id='button1'>Filters</button>
+			</div>
+		</div>
+		<div class='menu' id='menu'>
+			<div class='box' id='menuBox'>
+				<div class='menu0'>
+					<p>Search by:</p>
+					<div class='checkbox'> <input type='checkbox' id='cb00' name='cb00' checked> <label for='cb00'> ID</label> <p>The unique ID given to the document</p> </div>
+					<div class='checkbox'> <input type='checkbox' id='cb01' name='cb01' checked> <label for='cb01'> Title</label> <p>The title of the document</p> </div>
+					<div class='checkbox'> <input type='checkbox' id='cb02' name='cb02' checked> <label for='cb02'> Keywords</label> <p>Set of words that describe the document</p> </div>
+					<div class='checkbox'> <input type='checkbox' id='cb03' name='cb03' checked> <label for='cb03'> Content</label> <p>The content of the document</p> </div>
+				</div>
+				<div class='menu1'>
+					<div class='checkbox'> <input type='checkbox' id='cb10' name='cb10'> <label for='cb10'> Filters</label> </div>
+					<p>Filters enable searching via multiple criteria, results will have matches with all criteria, matches will be with documents containing exactly what is written in the query.</p>
+					<p>Tip: Use general wording or single words to filter out results.</p>
+				</div>
+			</div>
+		</div>
+		<div class='results' id='results'>
+			<h2 class='numResults' id='numResults'></h2>
+			<div class='yesResults' id='yesResults'>
+			</div>
+			<div class='noResults' id='noResults'>
+				<h2>No Best Practices match your Search</h2>
+				<p>Search Tips:</p>
+				<li>Make sure all words are spelled correctly</li>
+				<li>Try different or more general words</li>
+				<li>Try fewer words</li>				
+			</div>
+		</div>
+	</div>
+</body>	
+
+</html>

@@ -1,0 +1,368 @@
+button, input, optgroup, h1, select, textarea {
+  font-family: Arial, sans-serif;
+  line-height: 1.15;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	font-family: Arial, sans-serif;
+	background-color: #f2f2f2;
+}
+
+.container {
+  min-height: 100vh;
+  display: -ms-flexbox;
+  display: flex;
+	flex-direction: column;
+  -ms-flex-pack: center;
+      justify-content: center;
+  -ms-flex-align: center;
+      align-items: center;
+  font-family: 'Poppins', sans-serif;
+  background-size: cover;
+  background-position: center center;
+  padding: 15px;
+}
+
+.form {
+  width: 790px; /*RE 100%*/
+	border: none;
+  position: absolute;
+  top: var(--winHeight); /*RE 0*/
+  left: var(--winWidth);
+	background-color: #f2f2f2;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0); /*RE 0 0 5px rgba(0, 0, 0, 0.1)*/
+	display: inline; /*RE flex*/
+	position: absolute; /*RE fixed*/
+	z-index: 2;
+}
+
+.form .title {
+	display: flex;
+	justify-content: center; /*RE left*/
+  align-items: center;
+	padding: 0; /*RE 0 17px*/
+}
+
+.bpiButton {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: unset; /*RE pointer*/
+  display: flex;
+  -ms-flex-pack: center;
+		justify-content: center;
+  align-items: center;
+}
+
+.bpiButton:hover, .bpiButton:focus {
+  box-shadow: none;
+}
+
+.title h1 {
+	margin-left: 17px;
+	font-size: 32px;
+	font-weight: 500;
+	color: #666;
+	display: content; /*RE none*/
+}
+
+.innerForm {
+  width: 100%;
+	max-width: 790px;
+  margin: 17px 0px;
+}
+
+.inputField {
+  height: 70px;
+  width: 100%;
+  position: relative;
+}
+
+.bar {
+	height: 100%;
+	min-height: 70px;
+  width: 100%;
+  border: 0;
+  background: #fff;
+  display: block;
+  padding: 10px 70px;
+  font-size: 18px;
+  border-radius: 34px;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -ms-flex-align: center;
+      align-items: center;
+	box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.05);
+}
+	
+.bar input {
+	flex-grow: 1;
+  background: transparent;
+  font-size: 18px;
+  border: 0;
+  border-radius: 0;
+  vertical-align: baseline;
+	overflow: visible;
+  color: #666;
+}
+
+.bar input::placeholder {
+  color: #ccc;
+  font-size: 18px;
+}
+
+.bar input:hover, .bar input:focus {
+  outline: 0;
+}
+
+.searchButton {
+  width: 70px;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  position: absolute;
+  left: 0;
+  height: 100%;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  -ms-flex-pack: center;
+      justify-content: center;
+  align-items: center;
+}
+
+.searchButton svg {
+  fill: #ccc;
+  width: 30px;
+  height: 30px;
+  transition: color .2s ease-out;
+}
+
+.searchButton:hover, .searchButton:focus {
+  outline: 0;
+  box-shadow: none;
+}
+
+.searchButton:hover svg, .searchButton:focus svg {
+  fill: #666;
+}
+
+.xButton {
+	width: 70px;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  position: absolute;
+  right: 0;
+  height: 100%;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  display: none; /*RE flex*/
+  -ms-flex-pack: center;
+      justify-content: center;
+  align-items: center;
+}
+
+.xButton svg {
+  fill: #ccc;
+  width: 30px;
+  height: 30px;
+  transition: color .2s ease-out;
+}
+
+.xButton:hover, .xButton:focus {
+  outline: 0;
+  box-shadow: none;
+}
+
+.xButton:hover svg, .xButton:focus svg {
+  fill: #666;
+}
+
+.buttons {
+  padding: 0 17px;
+	display: flex;
+	width: 100%; /*RE 752px*/
+	justify-content: center;
+  align-items: center;
+	margin-left: 0;
+}
+
+.buttons button {
+  font-size: 14px;
+  display: inline-block;
+  background: #888;
+  padding: 0 15px;
+  line-height: 32px;
+  color: #fff;
+  border-radius: 16px;
+  margin: 0 5px;
+  cursor: pointer;
+	border: none;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+	transition: border-radius .2s ease-out, color .2s ease-out;
+}
+
+select {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+
+.custom-select {
+  padding: 0 17px;
+	display: flex;
+	width: min-content; /*RE 752px*/
+	position: relative;
+	justify-content: center;
+  align-items: center;
+	margin-left: 0;
+}
+
+.custom-select select {
+	font-size: 14px;
+	display: inline-block;
+	background: #888;
+	padding: 0 26px 0 15px;
+	height: 32px;
+	line-height: 32px;
+	color: #fff;
+	border-radius: 16px;
+  cursor: pointer;
+	border: none;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.custom-select select:hover, .custom-select select:focus {
+	outline: 0;
+	background-color: #888;
+}
+
+.custom-select::after {
+	content: '\25BC';
+	position: absolute;
+	right: 25px;
+	top: 50%;
+	transform: translateY(-50%);
+	pointer-events: none;
+	font-size: 14px;
+	color: #fff;
+}
+
+.results {
+	width: 100%;
+	padding: 104px 0 0 0;
+	display: none; /*RE inline*/
+	position: absolute;
+	top: 0;
+	justify-content: left;
+	text-align: left;
+}
+
+.noResults {
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+	display: none; /*RE inline*/
+	color: #666;
+	justify-content: center;
+	height: 74px;
+}
+
+.noResults h2 {
+	font-weight: 500;
+	height: 28px;
+	margin: 23px 0;
+}
+
+/*------------------
+   Table Formatting
+  ------------------*/
+
+table {
+  table-layout: auto;
+  width: 100%;
+  border-collapse: collapse;
+	text-wrap: wrap;
+	overflow-wrap: break-word;
+}
+
+/* Colors and formats the header */
+thead {
+  position: sticky;
+	top: 104px;
+	background-color: #f2f2f2;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+	z-index: 1;
+}
+thead th {
+	text-align: left;
+	height: 30px;
+}
+
+/* Adds padding around the text of each cell */
+th, td {
+	padding: 10px;
+	color: #666;
+}
+
+tbody {
+	z-index: 0;
+}
+
+thead p, tbody p {
+	margin-bottom: 0px;
+	margin-top: 0px;
+}
+
+/* Colors and formats odd rows */
+tbody tr:nth-child(odd) {
+  background-color: #ececec;
+	min-height: 30px;
+	text-align: left;
+	border: none;
+}
+
+/* Colors and formats even rows */
+tbody tr:nth-child(even) {
+	min-height: 30px;
+	text-align: left;
+	border: none;
+}
+
+
+@media screen and (max-width: 767px) {
+  .container .form .innerForm .inputField {
+    margin-bottom: 20px;
+    height: 50px;
+  }
+  .container .form .innerForm .inputField input {
+    padding-left: 55px;
+    font-size: 16px;
+  }
+  .container .form .innerForm .inputField .searchButton svg {
+    width: 26px;
+    height: 26px;
+  }
+}
+
+/* Column Sizing */
+thead th:nth-child(4) {
+	min-width: 125px;
+}
+
+thead th:nth-child(6) {
+	width: 230px;
+}

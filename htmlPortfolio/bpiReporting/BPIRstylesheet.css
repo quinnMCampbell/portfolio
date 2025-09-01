@@ -1,0 +1,510 @@
+/*---------
+  GENERAL
+---------*/
+
+* {
+  box-sizing: border-box; 
+}
+
+html {
+  height: 100vh;
+}
+
+body {
+  font-family: "Calibri", sans-serif;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: row;
+  margin-right: 0;
+  margin-left: 0;
+  margin-top: 0;
+  color: #FFFFFF;
+  background: #E6E7E6;
+}
+
+body > div {
+  overflow: clip;
+}
+
+p {
+  margin-left: 15px;
+}
+
+hr {
+  margin: 15px;
+  border: 1px solid;
+  border-color: #b3b1a8;
+}
+
+/*-------------------
+    CROSS-NAV CLASSES
+  -------------------*/
+
+.imageWrapper {
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header {
+  margin: 10px;
+  font-size: 30px;
+  text-align: center;
+}
+
+.contentWrapper {
+  padding-bottom: 50px;
+}
+
+.buttonWrapper {
+  padding: 5px 15px;
+  display: flex;
+  justify-content: left;
+  cursor: pointer;
+  transition: background-color 0.2s ease-out;
+}
+
+.buttonWrapper:hover {
+  color: #f1f1f1;
+  background-color: rgb(0, 0, 0, 0.2);
+}
+
+.buttonWrapper span {
+  font-size: 20px;
+}
+
+.nameWrapper {
+  width: 0;
+  display: flex;
+  justify-content: center;
+  background: #40587c;
+  box-shadow: 0 -5px 5px  rgba(0, 0, 0, 0.1);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  transition: width 0.5s;
+  overflow: clip;
+}
+
+.nameWrapper h3 {
+  margin: 0;
+  font-size: 40px;
+}
+
+/*----------
+    COLUMN 1
+  ----------*/
+
+.col-1 {
+  width: fit-content;
+  max-width: 250px;
+  min-width: 230px;
+  padding-top: 15px;
+  color: #FFFFFF;
+  position: fixed;
+  display: block;
+  transition: width 0.5s;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.col-1 img {
+  margin: -25px 0;
+}
+
+col-1 .contentWrapper {
+  text-wrap: wrap;
+}
+
+.col-1 .contentWrapper h3 {
+  padding-left: 1.2em;
+  text-indent: -1.2em;
+  margin: 0;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.col-1, .col-1 .nameWrapper {
+  background-color: #40587c;
+  transition: none;
+}
+
+.col-1 .nameWrapper.visibleWrapper {
+  width: var(--navWidthM);
+}
+
+.col-1 a {
+  padding: 0;
+  text-decoration: none;
+  font-size: 12px;
+  color: #FFFFFF;
+  display: block;
+  transition: width 0.5s;			  
+}
+
+.col-1 p {
+  position: absolute;
+  bottom: -16px;
+  left: 0px;
+}
+
+/*-------------------
+    UNIVERSAL SIDENAV
+  -------------------*/
+
+.sidenav {
+  display: none;
+  height: 100%;
+  width: 0;
+  padding-top: 15px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  text-wrap: nowrap;
+  transition: width 0.5s;
+}
+
+.sidenav.visibleColumn {
+  width: var(--mainWidth);
+}
+
+.sidenav a {
+  padding: 5px 15px;
+  margin: 0;
+  font-size: 18px;
+  font-weight: 400;
+  text-align: left;
+  text-decoration: none;
+  padding-left: calc(1.15em + 15px);
+  text-indent: -1.15em;
+  color: #ffffff;
+  display: block;
+  cursor: pointer;
+  transition: width 0.5s, background-color 0.2s ease-out;
+}
+
+.sidenav span {
+  padding-left: 1.15em;
+  display: inline-block;
+  margin: 0;
+  font-size: 18px;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+  background-color: rgb(0, 0, 0, 0.2);
+}
+
+.sidenav p {
+  margin-top: 0px;
+}
+
+.sidenav .closebtn {
+  font-size: 36px;
+  color: #000000;
+  transition: width 0.5s;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.listItems {
+  padding: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  background-color: #407855;
+}
+
+.pulldown {
+  background-color: #407855;
+  color: white;
+  cursor: pointer;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+}
+
+.pulldown:hover {
+  color: #f1f1f1;
+  background-color: #172226;
+}
+
+/*------------------
+    SPECIFIC SIDENAV
+  ------------------*/
+
+/* --- General --- */
+.sidenav.n1, .sidenav.n1 .nameWrapper {
+  background-color: #867365;
+}
+
+.sidenav.n1 .nameWrapper.visibleWrapper {
+  width: var(--navWidth1);
+}
+
+/* --- Part Activity --- */
+.sidenav.n2, .sidenav.n2 .nameWrapper {
+  background-color: #ca5010;
+}
+
+.sidenav.n2 .nameWrapper.visibleWrapper {
+  width: var(--navWidth2);
+}
+
+/* --- Engineering --- */
+.sidenav.n3, .sidenav.n3 .nameWrapper {
+  background-color: #038387;
+}
+
+.sidenav.n3 .nameWrapper.visibleWrapper {
+  width: var(--navWidth3);
+}
+
+/* --- Quality --- */
+.sidenav.n4, .sidenav.n4 .nameWrapper {
+  background-color: #8f7034;
+}
+
+.sidenav.n4 .nameWrapper.visibleWrapper {
+  width: var(--navWidth4);
+}
+
+/* --- Lathe --- */
+.sidenav.n5, .sidenav.n5 .nameWrapper {
+  background-color: #a4262c;
+}
+
+.sidenav.n5 .nameWrapper.visibleWrapper {
+  width: var(--navWidth5);
+}
+
+.sidenav.n5 .listItems, .sidenav.n5 .pulldown {
+  background-color: #a4262c;
+}
+
+/* --- Mill --- */
+.sidenav.n6, .sidenav.n6 .nameWrapper {
+  background-color: #407855;
+}
+
+.sidenav.n6 .nameWrapper.visibleWrapper {
+  width: var(--navWidth6);
+}
+
+/* --- Swiss --- */
+.sidenav.n7, .sidenav.n7 .nameWrapper {
+  background-color: #4052ab;
+}
+
+.sidenav.n7 .nameWrapper.visibleWrapper {
+  width: var(--navWidth7);
+}
+
+.sidenav.n7 .listItems, .sidenav.n7 .pulldown {
+  background-color: #4052ab;
+}
+
+/* --- Finishing --- */
+.sidenav.n8, .sidenav.n8 .nameWrapper {
+  background-color: #8764b8;
+}
+
+.sidenav.n8 .nameWrapper.visibleWrapper {
+  width: var(--navWidth8);
+}
+
+/* --- Shipping --- */
+.sidenav.n9, .sidenav.n9 .nameWrapper {
+  background-color: #737373;
+}
+
+.sidenav.n9 .nameWrapper.visibleWrapper {
+  width: var(--navWidth9);
+}
+
+/* --- Maintenance --- */
+.sidenav.n10, .sidenav.n10 .nameWrapper {
+  background-color: #580b12;
+}
+
+.sidenav.n10 .nameWrapper.visibleWrapper {
+  width: var(--navWidth10);
+}
+
+.sidenav.n10 img {
+  margin: -10px 0;
+}
+
+/* --- Standards and Safety --- */
+.sidenav.n11, .sidenav.n11 .nameWrapper {
+  background-color: #00308F;
+}
+
+.sidenav.n11 .nameWrapper.visibleWrapper {
+  width: var(--navWidth11);
+}
+
+/* --- Meeting Notes --- */
+.sidenav.n12, .sidenav.n12 .nameWrapper {
+  background-color: #393d3c;
+}
+
+.sidenav.n12 .nameWrapper.visibleWrapper {
+  width: var(--navWidth12);
+}
+
+/* --- HR Information --- */
+.sidenav.n13, .sidenav.n13 .nameWrapper {
+  background-color: #2F686F;
+}
+
+.sidenav.n13 .nameWrapper.visibleWrapper {
+  width: var(--navWidth13);
+}
+
+/* --- Calculators --- */
+.sidenav.n14, .sidenav.n14 .nameWrapper {
+  background-color: #002366;
+}
+
+.sidenav.n14 .nameWrapper.visibleWrapper {
+  width: var(--navWidth14);
+}
+
+/*---------------------
+    Unicode List Points
+  ---------------------*/
+
+/* --- Universal --- */
+.sidenav a:before {
+  padding-left: 1.15em;
+  display: inline-block;
+  font-size: 18px;
+}
+
+/* --- Live Documents --- */
+.sidenav .liveDoc a:before {
+  content: "\1f5b3";
+}
+
+/* --- Web Links --- */
+.sidenav .webLink a:before {
+  content: "\1f5b9";
+}
+
+/* --- Reports --- */
+.sidenav .report a:before {
+  content: "\1f5ca";
+}
+
+/* --- File Systems --- */
+.sidenav .fileSys a:before {
+  content: "\1f5c1";
+  font-size: 16px;
+}
+
+/* --- Job Notes --- */
+.sidenav .jobNotes a:before {
+  content: "1f5d2";
+}
+
+/* --- Machine Notes --- */
+.sidenav .machNotes a:before {
+  content: "\1f5c8";
+  font-size: 20px;
+}
+
+/* --- Search Tools --- */
+.sidenav .search a:before {
+  content: "\1f50e\fe0e";
+}
+
+/* --- Tools --- */
+.sidenav .tool a:before {
+  content: "\1f527\fe0e";
+}
+
+/*----------
+    COLUMN 2
+  ----------*/
+
+.col-2 {
+  background: #ffffff;
+  background-position: center;
+  background-size: 75% 75%;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  flex: 6;
+  margin-left: var(--mainWidth);
+  margin-right: 0;
+  margin-top: 0;
+  background-size: 75% 75%;
+  background-position: center;
+  position: relative;
+}
+
+.col-2 .content {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  padding: 0;
+  margin-top: 0;
+  margin-left: 0;
+  flex-direction: column;
+  background-image: none;
+  position: absolute;
+  z-index: 1;
+}
+
+.col-2 article {
+  height: 100%;
+  margin-top: 0;
+}
+
+.col-2 .logo {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.col-2 .logo * {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+.col-2 .logo object {
+  filter: invert(32%) sepia(9%) saturate(2555%) hue-rotate(177deg) brightness(93%) contrast(85%);
+  z-index: 1;
+}
+
+.col-2 .logo h1 {
+  height: 95px;
+  margin: 0;
+  border-width: 0;
+  background-color: #fff;
+  font-size: 75px;
+  font-weight: 900;
+  color: #40587c;
+  white-space: nowrap;
+  text-align: center;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.col-2 iframe {
+  height: 100%;
+  width: 100%;
+  border: none;
+  margin-right: 0;
+  margin-top: 0;
+}    
